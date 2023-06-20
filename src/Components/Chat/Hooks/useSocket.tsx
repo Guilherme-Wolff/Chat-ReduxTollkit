@@ -9,6 +9,8 @@ import { ObjectInArrayOfObject } from "../../../utils/functions"
 
 const WS_DOMAIN: string = 'localhost'
 const WS_PORT: string = '3001'
+const WS_URL_DEV:string = `http://${WS_DOMAIN}:${WS_PORT}`
+const WEBSOCKET_URL:string = process.env.REACT_APP_SOCKETIO_URL || "not-found"
 interface SOCKET {
     socket: Socket;
 }
@@ -19,7 +21,7 @@ export const useSocket = () => {
     let msgs = ObjectInArrayOfObject(MessagesArray)
     const last_message = msgs[msgs.length - 1]
     console.log("ultima",last_message)
-    const socket = io(`http://${WS_DOMAIN}:${WS_PORT}`, { transports: ["websocket"] });
+    const socket = io(WEBSOCKET_URL, { transports: ["websocket"] });
 
     let SOCKET: SOCKET = {
         socket: socket
