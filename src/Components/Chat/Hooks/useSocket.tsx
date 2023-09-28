@@ -21,7 +21,7 @@ export const useSocket = () => {
     let msgs = ObjectInArrayOfObject(MessagesArray)
     const last_message = msgs[msgs.length - 1]
     console.log("ultima",last_message)
-    const socket = io(WEBSOCKET_URL, { transports: ["websocket"] });
+    const socket = io(WEBSOCKET_URL, { transports: ["polling"] });
 
     let SOCKET: SOCKET = {
         socket: socket
